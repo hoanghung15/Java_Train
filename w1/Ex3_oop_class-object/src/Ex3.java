@@ -1,8 +1,39 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Ex3 {
+
+    public static void write_file(List<Student> students) {
+        File file = new File("student.txt");
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (Student student : students) {
+                String tmp = student.getName() + " | " + student.getAge() + "  | " + student.getScore();
+                bw.write(tmp);
+                bw.newLine();
+            }
+
+            bw.close();
+            fw.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static float avgScore(List<Student> listStudent) {
         float totalScore = 0;
         try {
@@ -33,10 +64,8 @@ public class Ex3 {
             switch (n) {
                 case 1:
                     System.out.println("Enter Student Name: ");
-
                     sc.nextLine();
                     String name = sc.nextLine();
-
 
                     System.out.println("Enter Student age: ");
                     int age = sc.nextInt();
@@ -47,6 +76,7 @@ public class Ex3 {
                     Student student = new Student(name, age, score);
                     listStudent.add(student);
 
+                    write_file(listStudent);
                     System.out.println("Add student successfully!");
                     break;
                 case 2:

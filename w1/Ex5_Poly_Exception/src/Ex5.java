@@ -1,11 +1,9 @@
-import javax.imageio.IIOException;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Ex5 {
@@ -24,17 +22,27 @@ public class Ex5 {
         }
     }
 
-    public static void printNameOfStudent() {
-//        String fileName = "C:\\Users\\hunghv\\Downloads\\Project\\TrainingJava\\w1\\Ex5_Poly_Exception\\src\\Student.txt";
+    public static void read_file() {
+        File f = new File("student.txt");
+
         try {
-//            BufferedReader br = new BufferedReader(new FileReader(fileName));
-            BufferedReader br = new BufferedReader(new InputStreamReader(Ex5.class.getResourceAsStream("/Student.txt")));
-            String name;
-            while ((name = br.readLine()) != null) {
-                System.out.println(name);
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            //Hoang Hung | 15 | 8
+            while (true) {
+                String line = br.readLine();
+                if (line == null) break;
+                String data[] = line.split("[|]");
+                String name = data[0].trim();
+                int age = Integer.parseInt(data[1].trim());
+                String score = data[2];
+                Student student = new Student(name, age, Float.parseFloat(score));
+                System.out.println(student.toString());
+
             }
-        } catch (IIOException e) {
-            System.out.println(e.getMessage());
+            br.close();
+            fr.close();
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -42,19 +50,8 @@ public class Ex5 {
         }
     }
 
-    public static void read_write_with_file(){
-        try{
-            FileWriter fw = new FileWriter("out.txt");
-            fw.write("hello");
-            fw.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static void main(String[] args) {
 //        Divide();
-        printNameOfStudent();
-        read_write_with_file();
+        read_file();
     }
 }
