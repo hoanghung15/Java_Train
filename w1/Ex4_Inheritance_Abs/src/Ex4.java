@@ -5,7 +5,10 @@ public class Ex4 {
         Circle c = new Circle(5);
         Rectangle r = new Rectangle(5, 5);
 
+        MusicPlayer mp = new MusicPlayer();
+
         System.out.printf("Area of circle: %.2f\n", c.getArea());
         System.out.printf("Area of rectangle: %.2f\n", r.getArea());
+        mp.play();
     }
 }

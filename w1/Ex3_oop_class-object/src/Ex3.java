@@ -18,7 +18,7 @@ public class Ex3 {
             }
         }
         try {
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             for (Student student : students) {
                 String tmp = student.getName() + " | " + student.getAge() + "  | " + student.getScore();
