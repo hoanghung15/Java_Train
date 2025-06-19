@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Ex2 {
     public static boolean isEven(int a) {
         return a % 2 == 0;
@@ -43,7 +41,7 @@ public class Ex2 {
 
         System.out.println(isEven(a) ? "Even" : "Odd");
         System.out.println(isDivisibleBy3(a) ? "Divisible by 3" : "No Divisible by 3");
-        System.out.println(isDivisibleBy3withLongNumber("666666666666666666667666") ? "Divisible by 3" : "No Divisible by 3");
+        System.out.println(isDivisibleBy3withLongNumber("666666666666666666661666") ? "Divisible by 3" : "No Divisible by 3");
 
         System.out.println("MultiplicationTable: ");
         printMultiplicationTable();
