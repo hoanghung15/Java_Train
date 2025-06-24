@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Ex1-Collection/Ex1-Collection.iml" filepath="$PROJECT_DIR$/Ex1-Collection/Ex1-Collection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ex2-Generics-Lambda/Ex2-Generics-Lambda.iml" filepath="$PROJECT_DIR$/Ex2-Generics-Lambda/Ex2-Generics-Lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ex3_Stream_API/Ex3_Stream_API.iml" filepath="$PROJECT_DIR$/Ex3_Stream_API/Ex3_Stream_API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ex4_Thread/Ex4_Thread.iml" filepath="$PROJECT_DIR$/Ex4_Thread/Ex4_Thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/week2.iml" filepath="$PROJECT_DIR$/.idea/week2.iml" />
+    </modules>
+  </component>
+</project>
