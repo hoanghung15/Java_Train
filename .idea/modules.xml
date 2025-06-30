@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/w1/Ex1_in_out/Ex1_in_out.iml" filepath="$PROJECT_DIR$/w1/Ex1_in_out/Ex1_in_out.iml" />
+      <module fileurl="file://$PROJECT_DIR$/w1/Ex2_Loop/Ex2_Loop.iml" filepath="$PROJECT_DIR$/w1/Ex2_Loop/Ex2_Loop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/w1/Ex3_oop_class-object/Ex3_oop_class-object.iml" filepath="$PROJECT_DIR$/w1/Ex3_oop_class-object/Ex3_oop_class-object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/w1/Ex4_Inheritance_Abs/Ex4_Inheritance_Abs.iml" filepath="$PROJECT_DIR$/w1/Ex4_Inheritance_Abs/Ex4_Inheritance_Abs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/w1/Ex5_Poly_Exception/Ex5_Poly_Exception.iml" filepath="$PROJECT_DIR$/w1/Ex5_Poly_Exception/Ex5_Poly_Exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java_Train.iml" filepath="$PROJECT_DIR$/.idea/Java_Train.iml" />
+    </modules>
+  </component>
+</project>
