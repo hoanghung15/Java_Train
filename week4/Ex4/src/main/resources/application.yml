@@ -9,6 +9,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  data:
+    redis:
+      port: 6379
+      timeout: 50000
+      host: localhost
 
 jwt:
   access:

@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
 import org.example.ex4.dto.request.LoginRequest;
 import org.example.ex4.dto.response.ApiResponse;
 import org.example.ex4.dto.response.AuthResponse;
@@ -14,8 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -35,6 +35,7 @@ public class AuthService {
     UserRepository userRepository;
     PasswordEncoder passwordEncoder;
     JwtService jwtService;
+    TokenService tokenService;
 
     public ApiResponse<AuthResponse> login(LoginRequest request) {
         boolean checkUsername = userRepository.existsByUsername(request.getUsername());
@@ -46,6 +47,9 @@ public class AuthService {
         if (matchPass) {
             accessToken = jwtService.generateToken(user, true, expAccess, accessKey);
             refreshToken = jwtService.generateToken(user, false, expRefresh, refreshKey);
+            tokenService.saveTokenToRedis(user.getUsername(), refreshToken);
+            tokenService.saveTokenToRedis(user.getUsername(), accessToken);
+            log.info("User's Token in Redis", tokenService.getTokenFromRedis(user.getUsername()));
         }
         AuthResponse authResponse = AuthResponse.builder()
                 .accessToken(accessToken)
