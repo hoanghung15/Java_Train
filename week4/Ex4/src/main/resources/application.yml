@@ -14,7 +14,21 @@ spring:
       port: 6379
       timeout: 50000
       host: localhost
-
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GG_CLIENT_ID}
+            client-secret: ${GG_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: ${FB_CLIENT_ID}
+            client-secret: ${FB_CLIENT_SECRET}
+            scope:
+              - email
 jwt:
   access:
     key: ${KEY_ACCESS}

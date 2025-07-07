@@ -3,6 +3,9 @@ package org.example.ex4.config;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.example.ex4.Util.CustomAccessDeniedHandler;
+import org.example.ex4.Util.CustomAuthenticationEntryPoint;
+import org.example.ex4.Util.CustomOAuth2SuccessHandler;
 import org.example.ex4.dto.CustomUserDetails;
 import org.example.ex4.entity.User;
 import org.example.ex4.filter.JwtFilter;
@@ -32,10 +35,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     UserRepository userRepository;
     JwtFilter jwtFilter;
+    CustomOAuth2SuccessHandler customOAuth2SuccessHandler;
+    CustomAccessDeniedHandler accessDeniedHandler;
+    CustomAuthenticationEntryPoint authenticationEntryPoint;
 
     private final String[] PUBLIC_ENDPOINTS = {
             "/auth/login",
             "/swagger-ui.html",
+            "/oauth2/**",
             "/swagger-ui/**",
             "/v3/api-docs/**",
             "/swagger-resources/**",
@@ -62,9 +69,15 @@ public class SecurityConfig {
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
         ;
 
+        http.oauth2Login(oauth2Login -> oauth2Login
+                .successHandler(customOAuth2SuccessHandler));
+
         http.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults());
 
+        http.exceptionHandling(exception -> exception
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .accessDeniedHandler(accessDeniedHandler));
 
         return http.build();
     }
