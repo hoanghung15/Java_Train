@@ -1,5 +1,6 @@
 package org.example.ex4.service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -60,6 +61,20 @@ public class AuthService {
                 .code(200)
                 .message("Success")
                 .result(authResponse)
+                .build();
+    }
+
+    public ApiResponse logout(HttpServletRequest request) {
+        String header = request.getHeader("Authorization");
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
+            String username = jwtService.extractUsername(token,accessKey);
+            tokenService.deleteTokenFromRedis(username);
+        }
+
+        return ApiResponse.builder()
+                .code(200)
+                .message("Logout successfully")
                 .build();
     }
 }
